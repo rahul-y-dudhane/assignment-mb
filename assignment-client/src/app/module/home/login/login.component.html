@@ -3,16 +3,20 @@
         Welcome To Employee Managment
     </span>
     <div class="app-card">
-        <form fxLayout="column" fxLayoutAlign="start stretch">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="start stretch">
             <mat-form-field>
-                <input matInput placeholder="Email">
+                <input formControlName="email" matInput placeholder="Email">
+                <mat-error *ngIf="loginForm.controls['email'].errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].errors?.email">Invalid email</mat-error>
+
             </mat-form-field>
             <mat-form-field>
-                <input matInput type="password" placeholder="Password">
+                <input formControlName="password" matInput type="password" placeholder="Password">
+                <mat-error *ngIf="loginForm.controls['password'].errors?.required">Password is required</mat-error>
             </mat-form-field>
             <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="24px">
-                <button mat-stroked-button color="primary" routerLink="/home/register">Sign Up</button>
-                <button mat-raised-button color="primary">Login</button>
+                <button type="button" mat-stroked-button color="primary" routerLink="/home/register">Sign Up</button>
+                <button type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
             </div>
         </form>
     </div>

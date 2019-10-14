@@ -1,22 +1,25 @@
-import { Injectable, TemplateRef } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class ToastService {
-  toasts: any[] = [];
 
-  show(textOrTpl: string | TemplateRef<any>, options: any = {}) {
-    this.toasts.push({ textOrTpl, ...options });
-  }
+  /**
+   *
+   * @param- snackBar
+   * @param- zone
+   */
+  constructor(private _snackBar: MatSnackBar) { }
 
-  remove(toast) {
-    this.toasts = this.toasts.filter(t => t !== toast);
-  }
-
-  showSuccessMessage(){
-    this.show('Done !', { classname: 'bg-success text-light' });
-  }
-
-  showErrorMessage(msg: string){
-    this.show(msg, { classname: 'bg-danger text-light' });
+  /**
+   *
+   * @param- errorText
+   */
+  public activate(message: string): void {
+    this._snackBar.open(message, 'Ok', {
+      duration: 4000,
+    });
   }
 }

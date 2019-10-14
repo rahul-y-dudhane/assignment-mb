@@ -5,10 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-
-
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -19,22 +22,32 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     FlexLayoutModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
+    RouterModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    MatDatepickerModule,
+    MatSnackBarModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   declarations: [],
-  providers: [],
+
+  providers: [MatDatepickerModule],
   entryComponents: []
 })
-export class SharedModule { 
+export class SharedModule {
   constructor() {
-	}
+  }
 }
