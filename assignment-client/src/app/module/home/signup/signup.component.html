@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+    <span fxLayout="row" fxLayoutAlign="center center" class="page-heading">
+        Create new account
+    </span>
+    <div class="app-card">
+        <form [formGroup]="signUpForm" fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-form-field>
+                <input matInput placeholder="First Name" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Mobile" formControlName="mobile">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Address" formControlName="address">
+            </mat-form-field>
+            <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="24px">
+                <button [disabled]="!signUpForm?.valid" mat-raised-button color="primary">Sign Up</button>
+                <button mat-button color="primary" routerLink="/home/login">Back to login</button>
+            </div>
+
+        </form>
+    </div>
+</div>

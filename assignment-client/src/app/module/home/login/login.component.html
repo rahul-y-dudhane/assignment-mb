@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+    <span fxLayout="row" fxLayoutAlign="center center" class="page-heading">
+        Welcome To Employee Managment
+    </span>
+    <div class="app-card">
+        <form fxLayout="column" fxLayoutAlign="start stretch">
+            <mat-form-field>
+                <input matInput placeholder="Email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password">
+            </mat-form-field>
+            <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="24px">
+                <button mat-stroked-button color="primary" routerLink="/home/register">Sign Up</button>
+                <button mat-raised-button color="primary">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
