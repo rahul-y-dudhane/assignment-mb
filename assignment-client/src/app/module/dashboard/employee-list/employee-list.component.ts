@@ -43,17 +43,6 @@ export class EmployeeListComponent implements OnInit {
     this.apiService.request('GET_ALL_EMPLYEES').subscribe(result => {
       this.allEmployees = [];
       this.allEmployees = result.data as UserModel[];
-      this.allEmployees.push({
-        address: "At-Post- Khingar,↵Tal- Mahabaleshwar,↵Dist- Satara.↵Via- Panchgani",
-        company: "Pune 1",
-        dateOfBirth: "2019-10-29",
-        email: "vaibgav@gmail.com",
-        firstName: "Vaibhav",
-        id: 18,
-        lastName: "Dudhane",
-        mobileNo: "7798863331",
-        type: "employee"
-      })
     });
   }
 
