@@ -18,42 +18,50 @@ export class EmployeeListComponent implements OnInit {
   userSub: Subscription;
   allEmployees: UserModel[] = []
   constructor(private userService: UserService,
-          private toastService: ToastService,
-          private router: Router,
-          private apiService: ApiService,
-          public dialog: MatDialog) { }
+    private toastService: ToastService,
+    private router: Router,
+    private apiService: ApiService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.userSub = this.userService.getLoggedInUser().subscribe(res => {
-      if(res){
+      if (res) {
         this.user = res as UserModel;
-       this.getAllEmployees();
-      }else{
+        this.getAllEmployees();
+      } else {
         this.toastService.activate('Try login');
         this.router.navigate(['/home/login']);
       }
     })
   }
 
-  getAllEmployees(){
+  /**
+   * @function getAllEmployees
+   * @description Get all employees from server
+   */
+  getAllEmployees() {
     this.apiService.request('GET_ALL_EMPLYEES').subscribe(result => {
       this.allEmployees = [];
       this.allEmployees = result.data as UserModel[];
       this.allEmployees.push({
-    address: "At-Post- Khingar,↵Tal- Mahabaleshwar,↵Dist- Satara.↵Via- Panchgani",
-    company: "Pune 1",
-    dateOfBirth: "2019-10-29",
-    email: "vaibgav@gmail.com",
-    firstName: "Vaibhav",
-    id: 18,
-    lastName: "Dudhane",
-    mobileNo: "7798863331",
-    type: "employee"
-  })
+        address: "At-Post- Khingar,↵Tal- Mahabaleshwar,↵Dist- Satara.↵Via- Panchgani",
+        company: "Pune 1",
+        dateOfBirth: "2019-10-29",
+        email: "vaibgav@gmail.com",
+        firstName: "Vaibhav",
+        id: 18,
+        lastName: "Dudhane",
+        mobileNo: "7798863331",
+        type: "employee"
+      })
     });
   }
 
-  addNewEmployee(){
+  /**
+   * @function addNewEmployee
+   * @description Open add new employee modal
+   */
+  addNewEmployee() {
     const dialogRef = this.dialog.open(AddEmployeeComponent, {
       width: "550px",
       height: "525px"
@@ -63,14 +71,21 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  onChanges(){
+  /**
+   * @function onChanges
+   * @description Called when something changes in employee
+   */
+  onChanges() {
     this.getAllEmployees();
   }
 
-  logout(){
+  /**
+   * @function logout
+   * @description Logout from portal
+   */
+  logout() {
     this.userSub ? this.userSub.unsubscribe() : null;
     this.router.navigate(['/home/login']);
     this.userService.setLoggedInUser(null);
   }
-
 }

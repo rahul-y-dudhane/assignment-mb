@@ -23,7 +23,7 @@ export class AddEmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+
     this.employee = this.data ? this.data.employee as UserModel : null;
 
     if (!this.employee) {
@@ -55,10 +55,18 @@ export class AddEmployeeComponent implements OnInit {
 
   }
 
+  /**
+   *@function saveOrUpdate
+   * @description Make a decision whether update or add new
+   */
   saveOrUpdate() {
     this.employee ? this.update() : this.add();
   }
 
+  /**
+   * @function add
+   * @description Create new entry for employee
+   */
   add() {
     let data = {
       firstName: this.addEmployeeForm.value.firstName,
@@ -84,6 +92,10 @@ export class AddEmployeeComponent implements OnInit {
     })
   }
 
+  /**
+   * @function update
+   * @description Update existing employee
+   */
   update() {
     let data = {
       id: this.employee.id,
@@ -94,11 +106,11 @@ export class AddEmployeeComponent implements OnInit {
       company: this.addEmployeeForm.value.company,
       address: this.addEmployeeForm.value.address,
       dateOfBirth: this.dateChanged ?
-      Date.UTC(this.addEmployeeForm.value.dateOfBirth.getFullYear(),
-        this.addEmployeeForm.value.dateOfBirth.getMonth(),
-        this.addEmployeeForm.value.dateOfBirth.getDate())
-      :
-      this.addEmployeeForm.value.dateOfBirth,
+        Date.UTC(this.addEmployeeForm.value.dateOfBirth.getFullYear(),
+          this.addEmployeeForm.value.dateOfBirth.getMonth(),
+          this.addEmployeeForm.value.dateOfBirth.getDate())
+        :
+        this.addEmployeeForm.value.dateOfBirth,
       type: 'employee'
     }
 

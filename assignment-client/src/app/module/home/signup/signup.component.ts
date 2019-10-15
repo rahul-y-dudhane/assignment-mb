@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { matchingPasswords } from 'src/app/core/shared/util/app-validators';
-// import { UserService } from 'src/app/core/services/user/user.service';
 import { ApiService } from '../../../core/services/api/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastService } from 'src/app/core/services/toast/toast.service';
@@ -21,7 +20,6 @@ export class SignupComponent implements OnInit {
               private toastService: ToastService) { }
 
   ngOnInit() {
-
     this.signUpForm = this.formBuilder.group({
       firstName: this.formBuilder.control(null, Validators.required),
       lastName: this.formBuilder.control(null, Validators.required),
@@ -34,6 +32,10 @@ export class SignupComponent implements OnInit {
     }, { validator: matchingPasswords('password', 'confirmPassword') });
   }
 
+  /**
+   * @function signUp
+   * @description Creating new manager
+   */
   signUp() {
     let data = {
       firstName: this.signUpForm.value.firstName,
@@ -46,15 +48,14 @@ export class SignupComponent implements OnInit {
                             this.signUpForm.value.dateOfBirth.getMonth(), 
                             this.signUpForm.value.dateOfBirth.getDate()),
       type:'manager'
-    }
+    };
 
     this.apiService.request('CREATE_USER',{data}).subscribe((result)=> {
       if(result.success){
         this.toastService.activate('Successfully! Please login to proceed further.')
         this.router.navigate(['./login'],{relativeTo:this.route});
       }
-    })
-    
+    });    
   }
 
 }

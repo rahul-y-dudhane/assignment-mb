@@ -19,28 +19,28 @@ export class LoginComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
-
     this.loginForm = this.formBuilder.group({
       email: this.formBuilder.control(null, [Validators.required, Validators.email]),
       password: this.formBuilder.control(null, [Validators.required])
     });
-
   }
 
-  login(){
+  /**
+   * @function login
+   * @description 
+   */
+  login() {
     let data = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password
     }
-this.apiService.request('LOGIN',{data}).subscribe(res => {
-  console.log(res);
-  if(res.success){
-    this.userService.setLoggedInUser(res.data);
-    this.router.navigate(['/dashboard']);
-  } else {
-    this.toastService.activate('Invalid credentials!')
-  }
-  
-})
+    this.apiService.request('LOGIN', { data }).subscribe(res => {
+      if (res.success) {
+        this.userService.setLoggedInUser(res.data);
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.toastService.activate('Invalid credentials!')
+      }
+    });
   }
 }

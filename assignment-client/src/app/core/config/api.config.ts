@@ -55,13 +55,15 @@ export class EndpointService {
    * @description Initialize endpoints array
    */
   private init() {
-
+    /**
+     * All api's with method. 
+     */
     this.endpoints = [
       { name: 'CREATE_USER', url: 'create-user', method: 'POST' },
       { name: 'LOGIN', url: 'login', method: 'POST' },
       { name: 'UPDATE_EMPLOYEE', url: 'update-employee', method: 'PUT' },
       { name: 'GET_ALL_EMPLYEES', url: 'employees', method: 'GET' },
-      { name: 'DELETE_EMPLOYEE', url: 'delete-employee', method: 'DELETE' },
+      { name: 'DELETE_EMPLOYEE', url: 'delete-employee', method: 'DELETE' }
     ];
   }
 }

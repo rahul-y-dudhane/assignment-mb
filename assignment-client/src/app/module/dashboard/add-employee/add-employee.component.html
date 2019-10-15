@@ -1,47 +1,49 @@
 <h1 mat-dialog-title>Add New Employee</h1>
 <div fxLayout="column" fxLayoutAlign="start stretch">
-            <form [formGroup]="addEmployeeForm" (ngSubmit)="saveOrUpdate()" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="14px">
-                <mat-form-field>
-                    <input matInput placeholder="First Name" formControlName="firstName">
-                    <mat-error *ngIf="addEmployeeForm.controls['firstName'].errors?.required">First Name is required</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="Last Name" formControlName="lastName">
-                    <mat-error *ngIf="addEmployeeForm.controls['lastName'].errors?.required">Last Name is required</mat-error>
-    
-                </mat-form-field>
-                <mat-form-field>
-                        <input matInput placeholder="Company" formControlName="company">
-                        <mat-error *ngIf="addEmployeeForm.controls['company'].errors?.required">Last Name is required</mat-error>
-        
-                    </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="Email" formControlName="email">
-                    <mat-error *ngIf="addEmployeeForm.controls['email'].errors?.required">Email is required</mat-error>
-                    <mat-error *ngIf="addEmployeeForm.controls['email'].errors?.email">Invalid email</mat-error>
-    
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="Mobile" formControlName="mobile">
-                    <mat-error *ngIf="addEmployeeForm.controls['mobile'].errors?.required">Mobile number is required</mat-error>
-                    <mat-error *ngIf="addEmployeeForm.controls['mobile'].errors?.pattern">Invalid mobile number</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Choose a date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="addEmployeeForm.controls['dateOfBirth'].errors?.required"> Date of birth required is required</mat-error>
-    
-                  </mat-form-field>
-                <mat-form-field>
-                    <textarea matInput placeholder="Address" formControlName="address">
+    <form [formGroup]="addEmployeeForm" (ngSubmit)="saveOrUpdate()" fxLayout="column" fxLayoutAlign="start stretch"
+        fxLayoutGap="14px">
+        <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="firstName">
+            <mat-error *ngIf="addEmployeeForm.controls['firstName'].errors?.required">First Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastName">
+            <mat-error *ngIf="addEmployeeForm.controls['lastName'].errors?.required">Last Name is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Company" formControlName="company">
+            <mat-error *ngIf="addEmployeeForm.controls['company'].errors?.required">Last Name is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="addEmployeeForm.controls['email'].errors?.required">Email is required</mat-error>
+            <mat-error *ngIf="addEmployeeForm.controls['email'].errors?.email">Invalid email</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Mobile" formControlName="mobile">
+            <mat-error *ngIf="addEmployeeForm.controls['mobile'].errors?.required">Mobile number is required</mat-error>
+            <mat-error *ngIf="addEmployeeForm.controls['mobile'].errors?.pattern">Invalid mobile number</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="addEmployeeForm.controls['dateOfBirth'].errors?.required"> Date of birth required is
+                required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Address" formControlName="address">
                     </textarea>
-                    <mat-error *ngIf="addEmployeeForm.controls['address'].errors?.required">Address is required</mat-error>
-                </mat-form-field>
-                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px">
-                    <button type="submit" [disabled]="!addEmployeeForm?.valid" mat-raised-button color="primary">Save</button>
-                    <button type="button" mat-button color="primary" (click)="dialogRef.close()">Cancel</button>
-                </div>
-    
-            </form>
-    </div>
+            <mat-error *ngIf="addEmployeeForm.controls['address'].errors?.required">Address is required</mat-error>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px">
+            <button type="submit" [disabled]="!addEmployeeForm?.valid" mat-raised-button color="primary">Save</button>
+            <button type="button" mat-button color="primary" (click)="dialogRef.close()">Cancel</button>
+        </div>
+
+    </form>
+</div>

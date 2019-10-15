@@ -1,26 +1,23 @@
 <div class="container" *ngIf="user" fxLayout="column" fxLayoutAlign="start stretch">
-<div class="topbar" fxLayout="row" fxLayoutAlign="center center">
-    <h2>
-       Welcome {{user.firstName+' '+user.lastName}}
-    </h2>
-</div>
-<div class="main-content" fxLayout="column" fxLayoutAlign="start stretch">
+    <div class="topbar" fxLayout="row" fxLayoutAlign="center center">
+        <h2>
+            Welcome {{user.firstName+' '+user.lastName}}
+        </h2>
+    </div>
+    <div class="main-content" fxLayout="column" fxLayoutAlign="start stretch">
 
-    <div fxLayout="row" fxLayoutAlign="end center">
-        <button mat-raised-button color="primary" (click)="addNewEmployee()">
-            Add new employee
-        </button>
-        <button mat-button color="primary" (click)="logout()">
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" (click)="addNewEmployee()">
+                Add new employee
+            </button>
+            <button mat-button color="primary" (click)="logout()">
                 Logout
             </button>
-    </div>
+        </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="start center">
-        <app-employee-card *ngFor="let employee of allEmployees" 
-        [employee]="employee"
-        (onChange)="onChanges()">
-
-        </app-employee-card>
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <app-employee-card *ngFor="let employee of allEmployees" [employee]="employee" (onChange)="onChanges()">
+            </app-employee-card>
+        </div>
     </div>
-</div>
 </div>

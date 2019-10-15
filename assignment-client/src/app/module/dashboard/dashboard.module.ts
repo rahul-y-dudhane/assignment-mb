@@ -18,7 +18,11 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [EmployeeListComponent, EmployeeCardComponent, AddEmployeeComponent],
+  declarations: [
+    EmployeeListComponent, 
+    EmployeeCardComponent, 
+    AddEmployeeComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
